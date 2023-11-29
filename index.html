@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Financial Assistance Preliminary Assessment Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css"> 
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="script.js" defer></script>
+</head>
+
+
+
+
+<form id="regForm" action="">
+
+    <h1>Financial Assistance Preliminary Assessment Form</h1>
+    <div id="google_translate_element"></div>
+    <br>
+    <div class="tab">Personal:
+        <p><input placeholder="NRIC number" oninput="this.className=''">
+            <input placeholder="Name as in NRIC" oninput="this.className=''"></p>   
+    
+        <label for="selectOptionHsgAdd">Housing Address:</label>
+        <select id="selectOptionHsgAdd" onchange="showSelectedOption()">
+        <option value="Ang Mo Kio">Ang Mo Kio</option>
+            <option value="Bedok">Bedok</option>
+            <option value="Bishan">Bishan</option>
+            <option value="Bukit Batok">Bukit Batok</option>
+            <option value="Bukit Merah">Bukit Merah</option>
+            <option value="Bukit Panjang">Bukit Panjang</option>
+            <option value="Bukit Timah">Bukit Timah</option>
+            <option value="Changi">Changi</option>
+            <option value="Choa Chu Kang">Choa Chu Kang</option>
+            <option value="Clementi">Clementi</option>
+            <option value="Geylang">Geylang</option>
+            <option value="Hougang">Hougang</option>
+            <option value="Jurong East">Jurong East</option>
+            <option value="Jurong West">Jurong West</option>
+            <option value="Kallang">Kallang</option>
+            <option value="Mandai">Mandai</option>
+            <option value="Marine Parade">Marine Parade</option>
+            <option value="Newton">Newton</option>
+            <option value="Novena">Novena</option>
+            <option value="Orchard">Orchard</option>
+            <option value="Outram">Outram</option>
+            <option value="Pasir Ris">Pasir Ris</option>
+            <option value="Paya Lebar">Paya Lebar</option>
+            <option value="Pioneer">Pioneer</option>
+            <option value="Punggol">Punggol</option>
+            <option value="Queenstown">Queenstown</option>
+            <option value="River Valley">River Valley</option>
+            <option value="Rochor">Rochor</option>
+            <option value="Seletar">Seletar</option>
+            <option value="Sembawang">Sembawang</option>
+            <option value="Sengkang">Sengkang</option>
+            <option value="Serangoon">Serangoon</option>
+            <option value="Sungei Kadut">Sungei Kadut</option>
+            <option value="Tampines">Tampines</option>
+            <option value="Tanglin">Tanglin</option>
+            <option value="Toa Payoh">Toa Payoh</option>
+            <option value="Woodlands">Woodlands</option>
+            <option value="Yishun">Yishun</option>
+            </select>
+            <br>
+            <label for="selectOptionHsgType">Housing Type:</label>
+            <select id="selectOptionHsgType" onchange="showSelectedOption()">
+            <option value="1rm2rm">1-room/2-room</option>
+            <option value="3rm">3-room</option>
+            <option value="4rm">4-room</option>
+            <option value="5rm">5-room / Executive Condo</option>
+            <option value="Landed">Landed Property</option>
+            <option value="PteApt">Private Apartment & Condominiums</option>
+            </select>  
+          
+            <div id="selectedOptionHsgAdd"></div>
+            <div id="selectedOptionHsgType"></div> 
+               
+            <br>
+            <input type="checkbox"> Latest payslip <br>
+            <input type="checkbox"> IR8A Employee Earnings (if you are self-employed)<br> 
+            <input type="checkbox"> CPF statement/letter of employment for yourself (i.e., that of patient), <!--all immediate family members* (living or not living together) and non-immediate family members living together--> <br>
+            <input type="checkbox"> Other sources of income (e.g., rental, pension, annunity, CPF payout) <br>
+            <input type="checkbox"> Savings: All updated bankbooks/statements (including personal/joint/fixed deposit accounts) of patient and spouse<br>
+            <input type="checkbox"> Latest CPF statement of yourself (i.e, patient) and spouse (past 12 months transaction history)<br>
+            <input type="checkbox"> Insurance policies of yourself (i.e, patient) <br>
+            <!--to consider having a remarks field for the items that patient did not bring and date they must submit by-->
+                    
+            <br>
+            <!--<label>Upload Supporting Documents:</label>
+            <input type="file" id="supportingDocuments" accept=".pdf, .doc, .docx">
+            <br>-->
+            <div id="drop-area">
+                <span class="drop-text">Drag and drop a file or
+                <br>or take and upload a photo</span>
+                <canvas id="canvas" width="300" height="300"></canvas>
+                <br>
+                <center><button id="captureButton">Take Photo</button></center>
+            </div>
+    </div>
+    
+    <div class="tab">Family
+        <table class = "fl-table" id="Family">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>NRIC</th>
+                <th>Nationality</th>
+                <th>Age</th>
+                <th>Relationship <br>to patient</th>
+                <th>Occupation</th>
+                <th>Gross Income</th>
+                <th>Nett Income</th>
+            </tr>
+        </thead>       
+        <tbody>
+            <tr>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <button type="button" onclick="addRow()">Add Row</button>
+    </div>
+    
+    <div class="tab">Monthly Household Expenses:
+      <table id="expensesTable">
+
+        <tr>
+          <th>Item</th>
+          <th>Expenses ($)</th>
+          <th>Remarks</th>
+        </tr>
+        <tr>
+          <td>Food</td>
+          <td contenteditable="true" class="expense-amount">0</td>
+          <td><textarea class="expense-remarks" rows="1
+            " cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Utilities (electricity) </td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Housing (rental/instalment in cash) </td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Household durables (e.g., electrical appliances) </td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Conservancy</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Public Transport</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Private Transport (i.e, personal vehicle) </td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+          </tr>
+        <tr>
+            <td>Communication (i.e., mobile, home internet, landline, etc.)</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Healthcare</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>School Expenses</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Childcare Expenses</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Contribution to family</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+          </tr>
+        <tr>
+            <td>Insurance</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Loan Instalments (e.g., hire purchase, housing, car, renovation, education, credit card, etc.)</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Taxes/licence fees</td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Domestic Helper </td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+        </tr>
+        <tr>
+            <td>Miscellaneous </td>
+            <td contenteditable="true" class="expense-amount">0</td>
+            <td><textarea class="expense-remarks" rows="1" cols="20"></textarea></td>
+          </tr>
+        
+        <tr>
+          <td>Total</td>
+          <td id="total">0</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+    
+    <!-- Circles which indicates the steps of the form: -->
+    <div style="text-align:center;margin-top:40px;">
+      <span class="step"></span>
+      <span class="step"></span>
+      <span class="step"></span>
+    </div>
+    
+    </form>
+</html>
